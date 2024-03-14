@@ -1,6 +1,6 @@
 import React from 'react'
-import offergirl1 from "./offergirl1.png"
-import gifts1 from "./gifts1.png"
+import offergirl1 from "./images/offergirl1.png"
+import gifts1 from "./images/gifts1.png"
 
 export const OfferSection = () => {
   return (

@@ -1,12 +1,12 @@
 import React from 'react'
-import ring1 from './ring1.png'
-import watch2 from './watch2.png'
-import teddy3 from './teddy3.png'
-import flower4 from './flower4.png'
-import teddy5 from './teddy5.png'
-import flower6 from './flower6.png'
-import watch7 from './watch7.png'
-import ring8 from './ring8.png'
+import ring1 from './images/ring1.png'
+import watch2 from './images/watch2.png'
+import teddy3 from './images/teddy3.png'
+import flower4 from './images/flower4.png'
+import teddy5 from './images/teddy5.png'
+import flower6 from './images/flower6.png'
+import watch7 from './images/watch7.png'
+import ring8 from './images/ring8.png'
 import { Link } from 'react-router-dom'
 
 export const Products = () => {
@@ -222,9 +222,9 @@ export const Products = () => {
                         </div>
                     </div>
                     <div className="btn-box">
-                        <a href="">
+                        <Link href="">
                             View All Products
-                        </a>
+                        </Link>
                     </div>
                 </div>
             </section>

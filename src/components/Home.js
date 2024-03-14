@@ -7,7 +7,7 @@ import { Testimonial } from './Testimonial';
 import { Footer } from './Footer';
 import { OfferSection } from './OfferSection';
 import { Link } from "react-router-dom";
-import girlimg from './girlimg.png'
+import girlimg from './images/girlimg.png'
 
 
 export const Home = () => {
@@ -88,7 +88,7 @@ export const Home = () => {
                                             </div>
                                             <div className="col-md-5 ">
                                                 <div className="img-box">
-                                                    <img src={require("../images/slider-img.png")} alt="" />
+                                                    <img src={girlimg} alt="" />
                                                 </div>
                                             </div>
                                         </div>
