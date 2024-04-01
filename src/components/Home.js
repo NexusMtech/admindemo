@@ -8,7 +8,7 @@ import { Footer } from './Footer';
 import { OfferSection } from './OfferSection';
 import { Link, json } from "react-router-dom";
 import girlimg from './images/girlimg.png'
-import Modal from 'react-bootstrap/Modal'
+import Modal from './Modal';
 import { useState } from 'react';
 
 
@@ -28,8 +28,48 @@ export const Home = () => {
     const cancel = () => {
         setShow(false);
     }
+
+    const [state, setState] = useState({
+        heading: 'Welcome To Our Gift Shop',
+        paragraph: 'Sequi perspiciatis nulla reiciendis, rem, tenetur impedit, eveniet non necessitatibus error distinctio mollitia suscipit. Nostrum fugit doloribus consequatur distinctio esse, possimus maiores aliquid repellat beatae cum, perspiciatis enim, accusantium perferendis.',
+        image: girlimg,
+    });
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        console.log(e.target[0].value);
+        console.log(e.target[1].value);
+        console.log(e.target[2].files);
+        setState({
+            heading: e.target[0].value,
+            paragraph: e.target[1].value,
+            image: URL.createObjectURL(e.target[2].files[0]),
+        });
+        cancel();
+    }
+
     return (
         <div>
+            <Modal show={show} title={'Edit'} handleClose={cancel} handleSubmit={() => null}>
+                <form onSubmit={handleSubmit}>
+                    <div className="form-group p-2">
+                        <label for="heading">Heading</label>
+                        <input name='heading' className="form-control" id="heading" aria-describedby="emailHelp" placeholder="Enter email" />
+                    </div>
+                    <div class="form-group p-2">
+                        <label for="paragraph">Paragraph</label>
+                        <textarea name='paragraph' className="form-control" id="paragraph" placeholder="Paragraph" />
+                    </div>
+                    <div class="form-group p-2">
+                        <label for="image" class="form-label">Image</label>
+                        <input name='image' class="form-control" type="file" id="formFile" />
+                    </div>
+                    <div>
+                        <button className='btn btn-secondary' onClick={cancel} >Cancel</button>
+                        <button type='submit' className='btn btn-success'>Done</button>
+                    </div>
+                </form>
+            </Modal>
             <div className="hero_area">
                 <Navbar />
                 <section className="slider_section">
@@ -42,21 +82,16 @@ export const Home = () => {
                                             <div className="col-md-7">
                                                 <div className="detail-box">
                                                     <h1>
-                                                        Welcome To Our <br />
-                                                        Gift Shop
+                                                        {state.heading}
                                                     </h1>
                                                     <p>
-                                                        Sequi perspiciatis nulla reiciendis, rem, tenetur impedit, eveniet non necessitatibus error distinctio mollitia suscipit. Nostrum fugit doloribus consequatur distinctio esse, possimus maiores aliquid repellat beatae cum, perspiciatis enim, accusantium perferendis.
+                                                        {state.paragraph}
                                                     </p>
-
-
-
-
                                                 </div>
                                             </div>
                                             <div className="col-md-5 ">
                                                 <div className="img-box">
-                                                    <img src={girlimg} alt="" />
+                                                    <img src={state.image} alt="" />
                                                 </div>
                                             </div>
                                         </div>
@@ -126,26 +161,6 @@ export const Home = () => {
                             </button>
 
                         </div>
-                        <Modal show={show}>
-
-                            <Modal.Header>Edit Home</Modal.Header>
-                            <Modal.Body>
-                                <input type="text"
-                                    className='form-control'
-                                />
-                                  <input type="text"
-                                    className='form-control'
-                                />
-                                <img src="" alt="" />
-                                
-                            </Modal.Body>
-
-                            <Modal.Footer>
-                                <button className='btn btn-secondary' onClick={cancel} >Cancel</button>
-                                <button className='btn btn-success' >Done</button>
-                            </Modal.Footer>
-
-                        </Modal>
                     </div>
                 </section>
             </div>
